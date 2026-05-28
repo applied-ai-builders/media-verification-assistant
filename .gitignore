@@ -21,6 +21,10 @@ Thumbs.db
 .vscode/
 .tmp/
 
+# Personal local workspace for agent/tool artifacts
+/personal/*
+!/personal/README.md
+
 # Generated data, model artifacts, and uploads
 data/
 datasets/
