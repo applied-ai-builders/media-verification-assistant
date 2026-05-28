@@ -20,21 +20,21 @@ The MVP currently focuses on still images. Terms covering audio and video are in
 
 ### Deepfake
 
-Media in which a real person's face, voice, or body is replaced, altered, or synthesized using deep learning to make them appear to say or do something they did not. In this project we use it as a narrower term than *synthetic media*: a deepfake specifically involves a real person's identity.
+Media in which a real person's face, voice, or body is replaced, altered, or synthesized using deep learning. This includes both generative deepfakes, where content is created entirely by an AI model such as a GAN or diffusion model, and impersonation deepfakes, where a real person's identity is inserted into existing content through techniques like face-swap or lip-sync. This is a narrower term than *synthetic media*: a deepfake specifically involves a real person's identity.
 
 - **Example:** A video where a politician's face is swapped onto another speaker using a generative model, with matching cloned audio.
-- **MVP scope:** **Out of scope.** Full deepfake detection, especially for video and audio, is not the first target. The MVP may mention deepfakes as context but should not claim to detect them.
-- **Source:** [datacamp - "What Are Deepfakes? Examples, Applications, Ethical Challenges"](https://www.datacamp.com/blog/deepfakes?utm_cid=22660585401&utm_aid=181540419795&utm_campaign=230119_1-ps-other~dsa-tofu~blog_2-b2c_3-nam_4-prc_5-na_6-na_7-le_8-pdsh-go_9-nb-e_10-na_11-na&utm_loc=9001538-&utm_mtd=-c&utm_kw=&utm_source=google&utm_medium=paid_search&utm_content=ps-other~nam-en~dsa~tofu~blog~artificial-intelligence&gad_source=1&gad_campaignid=22660585401&gbraid=0AAAAADQ9WsHdXIRc0YRXYNjTY4im2oyEa&gclid=CjwKCAjwtvvPBhBuEiwAPMijr4_F8znIhtS60GzaMXTnRG1G4vNwtYQyEDuRNJgh8c7w_2MR1npidBoCl-YQAvD_BwE)
+- **MVP scope:** **Out of scope.** Full video, audio, and person-identity deepfake detection is out of scope for the MVP. However, still-image synthetic media and manipulation signals may still be relevant and are handled under AI-generated image and manipulation detection.
+- **Source:** [Farid - "Mitigating the harms of manipulated media" (PNAS Nexus, 2025)](https://academic.oup.com/pnasnexus/article/4/7/pgaf194/8209913)
 
 ---
 
 ### Synthetic Media
 
-Any media (image, audio, video, or text) generated or significantly modified by an algorithm rather than captured directly from the physical world. Deepfakes are a subset of synthetic media, as are AI-generated images and voice clones.
+Any media, including images, audio, video, or text, generated or significantly modified by an AI model rather than captured directly from the physical world. Deepfakes are a subset of synthetic media, as are AI-generated images and voice clones. Synthetic media includes both fully generated content and heavily modified real content.
 
 - **Example:** A photorealistic portrait of a person who does not exist, produced by a diffusion model.
 - **MVP scope:** **Partial scope.** Still-image synthetic-media signals may be explored; broad synthetic media coverage across audio and video is a later phase.
-- **Source:** [D-iD - "Synthetic Media"](https://www.d-id.com/resources/glossary/synthetic-media/)
+- **Source:** [Farid - "Mitigating the harms of manipulated media" (PNAS Nexus, 2025)](https://academic.oup.com/pnasnexus/article/4/7/pgaf194/8209913)
 
 ---
 
@@ -44,47 +44,48 @@ Misleading media produced with simple, non-AI techniques such as relabelling, mi
 
 - **Example:** A real video of a public figure slowed down to make them appear impaired, then shared with a misleading caption.
 - **MVP scope:** **Out of scope.** The MVP should avoid claiming it can detect all misleading edits or context changes.
-- **Source:** [Data & Society - "Deepfakes and Cheap Fakes"](https://datasociety.net/library/deepfakes-and-cheap-fakes/)
+- **Source:** [Farid - "Mitigating the harms of manipulated media" (PNAS Nexus, 2025)](https://academic.oup.com/pnasnexus/article/4/7/pgaf194/8209913)
 
 ---
 
 ### Face Swap
 
-A specific deepfake technique where one person's face is replaced with another's in an image or video, typically while preserving the original expression, lighting, and head pose. Face swaps can range from simple effects to full AI manipulations.
+A specific deepfake technique where one person's face is replaced with another's in an image or video, typically while preserving the original expression, lighting, and head pose. Face swaps are one of the most common forms of deepfakes and can range from simple effects to full AI manipulations.
 
-- **Example:** A celebrity's face inserted onto an actor's body in an existing film.
+- **Example:** Swapping someones face onto the body of a celebrity, a movie character, or a historical figure.
 - **MVP scope:** **Out of scope.** Video face-swap detection is a later phase. Still-image artifacts may be noted only if supported by a selected model.
-- **Source:** [ui42 - "What is Faceswap"](https://www.ui42.com/dictionary/faceswap)
+- **Source:** [Farid - "Mitigating the harms of manipulated media" (PNAS Nexus, 2025)](https://academic.oup.com/pnasnexus/article/4/7/pgaf194/8209913)
 
 ---
 
 ### Voice Clone
 
-Synthetic audio that imitates a specific person's voice, tone, cadence, or speaking style, typically generated from a sample of their real speech.
+Synthetic audio that imitates a specific person's voice, tone, cadence, or speaking style. Modern neural voice cloning systems can learn to reproduce a person's voice from only a few audio samples, using deep learning techniques such as speaker adaptation and speaker encoding to capture speaker characteristics like pitch, speech rate, and accent.
 
-- **Example:** A scam caller uses generated audio that sounds like a company executive requesting an urgent money transfer.
+- **Example:** A politician's voice is cloned from publicly available speech recordings and used to generate a fake audio clip of them announcing a policy position they never took, which is then shared on social media ahead of an election.
 - **MVP scope:** **Out of scope.** Audio ingestion and voice-clone detection are not part of the image-first MVP.
-- **Source:** [rws - "What is voice cloning?"](https://www.rws.com/blog/what-is-voice-cloning/)
+- **Source:** [Arık et al. - "Neural Voice Cloning with a Few Samples" (NeurIPS, 2018)](https://proceedings.neurips.cc/paper_files/paper/2018/file/4559912e7a94a9c32b09d894f2bc3c82-Paper.pdf) | [Farid - "Mitigating the harms of manipulated media" (PNAS Nexus, 2025)](https://academic.oup.com/pnasnexus/article/4/7/pgaf194/8209913)
 
 ---
 
 ### AI-generated image
 
-An image produced entirely by a generative model from a prompt or other input, with no underlying photograph. Distinct from an *AI-edited image*, which starts from a real photo.
+An image produced entirely by a generative model such as a GAN or diffusion model, from a prompt or other input, with no underlying photograph. These images can be highly photorealistic and are increasingly difficult for people to distinguish from real photographs. This is distinct from an *AI-edited image*, which starts from a real photo.
 
-- **Example:** A diffusion model creates a photorealistic image of a street protest that never happened.
+- **Example:** A diffusion model creates a photorealistic image of a street protest or of a politician at a rally that never took place.
 - **MVP scope:** **In scope.** A baseline generated-image signal is part of the image-first MVP.
-- **Source:** [Cloudflare - "What is AI image generation"](https://www.cloudflare.com/learning/ai/ai-image-generation/)
+- **Source:** [Farid - "Mitigating the harms of manipulated media" (PNAS Nexus, 2025)](https://academic.oup.com/pnasnexus/article/4/7/pgaf194/8209913)
 
 ---
 
-### AI-edited image
+### AI-edited Image
 
-A real photograph that has been modified using AI tools such as inpainting, outpainting, generative fill, or AI-based retouching. The base image is authentic, but parts have been altered or extended by a model.
+A real photograph that has been modified using AI tools such as inpainting, outpainting, generative fill, or AI-based retouching. The base image is authentic, but parts have been altered, removed, or extended by a generative model. AI-edited images are distinct from fully AI-generated images because they start from a real
+capture, making manipulation harder to detect.
 
-- **Example:** A real news photo where a person has been removed using generative fill.
+- **Example:** A real news photo where a person has been removed using generative fill, with the surrounding background reconstructed seamlessly by a diffusion model.
 - **MVP scope:** **Partial scope.** The MVP may report image-manipulation signals but should not promise reliable detection of every AI edit.
-- **Source:** [Narrative - "AI Editing Explained: A Game Changer For Photographers"](https://narrative.so/blog/ai-editing-explained-a-game-changer-for-photographers) | [Artsmart - "What Is Inpainting and Outpainting? A Guide to AI’s Creative Magic"](https://artsmart.ai/blog/what-is-inpainting-and-outpainting/)
+- **Source:** [Jiang et al. - "Image Inpainting Based on Generative Adversarial Networks" (IEEE Access, 2020)](https://ieeexplore.ieee.org/document/8974211) | [Wang et al. - "Continuous Image Outpainting with Neural ODE" (ACM TOMM, 2024)](https://dl.acm.org/doi/full/10.1145/3648367)
 
 ---
 
@@ -110,31 +111,31 @@ False or misleading information shared with intent to deceive, manipulate, or ca
 
 ### Provenance
 
-Verifiable information about where a piece of media came from, who created or modified it, when, and how. Strong provenance is cryptographically signed and travels with the file. Missing provenance must not be treated as proof of fakery.
+Verifiable information about where a piece of media came from, who created or modified it, when, and how. Strong provenance is cryptographically signed and travels with the file. Provenance establishes origin and history but cannot confirm whether the content depicts something true. Additionally, missing provenance must not be treated as proof of fakery.
 
-- **Example:** Digital photo Metadata that records the original camera settings, the exact time the photo was taken, and any subsequent edits made in software like Photoshop.
+- **Example:** A news photo published with a Content Credentials manifest attached, showing the camera make, capture time, and a signed record of edits made before publication.
 - **MVP scope:** **In scope.** Basic metadata and provenance checks can be reported when available, with clear limitations stated.
-- **Source:** [Numbers Protocol - "What is provenance and how does it work?"](https://docs.numbersprotocol.io/introduction/faq/what-is-provenance-and-how-does-it-work/)
+- **Source:** [C2PA - "C2PA Explainer"](https://spec.c2pa.org/specifications/specifications/1.3/explainer/_attachments/Explainer.pdf)
 
 ---
 
 ### Watermark
 
-A unique identifoer embedded in media to identify its source, authenticity, or AI-generated nature. Watermarks may be visible (logos, overlays) or invisible (hidden in the color patterns of an image or video,). 
+A unique identifier embedded in media to identify its source, authenticity, or AI-generated nature. Watermarks may be visible (logos, overlays) or invisible (hidden in pixel values or frequency components of the image). 
 
 - **Example:** Google SynthID embeds an imperceptible signal into images produced by Imagen, which a compatible detector can later recognize.
 - **MVP scope:** **Partial scope.** The MVP may report known metadata or provenance markers; robust watermark detection is a later phase unless a low-cost supported tool is available.
-- **Source:** [Box - "What is a digital watermark?"](https://www.box.com/resources/what-is-a-digital-watermark)
+- **Source:** [Begum & Uddin - "Digital Image Watermarking Techniques: A Review" (MDPI, 2020)](https://www.mdpi.com/2078-2489/11/2/110)
 
 ---
 
 ### Manipulation Detection
 
-Techniques and models that identify whether media has been altered or synthesized, regardless of whether provenance information is available. Includes classical forensics (compression artifacts, error level analysis, sensor noise) and learned detectors trained on synthetic versus real media. It is an evidence signal, not a final truth judgment.
+The process of analyzing media to identify signs of editing, generation, or manipulation. Detection approaches fall into two broad categories: learning-based, where a model is trained to distinguish real from synthetic content; and artifact-based, where specific irregularities such as pixel correlations, compression patterns, or geometric inconsistencies are analyzed as signals of manipulation. Detection is an evidence signal, not a final truth judgment. Therefore, the absence of detected manipulation does not confirm that content is authentic.
 
-- **Example:** A model flags facial regions as likely face-swapped based on inconsistent blending, lighting, and compression artifacts.
+- **Example:** A learning-based detector assigns a high probability score to an image as likely AI-generated, while an artifact-based technique separately identifies that parallel lines in the image fail to converge to a consistent vanishing point. This results in a geometric inconsistency common in synthetically generated images.
 - **MVP scope:** **In scope.** Narrow image-focused manipulation or synthetic-media signals may be included, with confidence language and stated limitations.
-- **Source:** [Pindrop - "Deepfake Detection"](https://www.pindrop.com/glossary/deepfake-detection/#:~:text=Comparing%20audio%20with%20lip%20movements,platforms%20adapt%20to%20new%20threats.)
+- **Source:** [Farid - "Mitigating the harms of manipulated media" (PNAS Nexus, 2025)](https://academic.oup.com/pnasnexus/article/4/7/pgaf194/8209913)
 
 <br>
 
